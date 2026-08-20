@@ -6,13 +6,17 @@ class StudentMiddleware
 {
     public function handle($next)
     {
-        if (
-            !isset($_SESSION['student_access']) ||
-            $_SESSION['student_access'] !== '3F4'
-        ) {
+        if (!isset($_SESSION['profile_access'])) {
             redirect('student');
             return;
         }
+
+        if ($_SESSION['profile_access'] !== true) {
+            redirect('student');
+            return;
+        }
+
+        unset($_SESSION['profile_access']);
 
         return $next();
     }

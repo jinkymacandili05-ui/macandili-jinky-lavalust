@@ -168,9 +168,9 @@
                 🏠 Home
             </a>
 
-              <a href="<?= site_url('student/profile'); ?>">
-        👤 Student Profile
-    </a>
+             <a href="<?= site_url('student/access-profile'); ?>">
+    👤 Student Profile
+</a>
         </div>
 
     </div>

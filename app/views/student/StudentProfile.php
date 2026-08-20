@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Profile | Student Information</title>
+    <title>Student Profile</title>
 
     <style>
         * {
@@ -20,11 +20,11 @@
             color: #1e1b4b;
         }
 
-        .profile-card {
+        .container {
             max-width: 850px;
-            margin: auto;
-            background: white;
-            padding: 45px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 40px 45px;
             border-radius: 25px;
             box-shadow: 0 15px 35px rgba(49, 46, 129, 0.15);
             border-top: 7px solid #4f46e5;
@@ -32,106 +32,98 @@
 
         .profile-header {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
         .profile-icon {
-            width: 85px;
-            height: 85px;
+            width: 90px;
+            height: 90px;
             margin: 0 auto 15px;
             background: #eef2ff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 43px;
+            font-size: 45px;
         }
 
-        .profile-header h1 {
-            margin-bottom: 8px;
+        h1 {
             color: #312e81;
-            font-size: 30px;
+            margin: 10px 0;
+            font-size: 32px;
         }
 
-        .profile-header p {
-            color: #6b7280;
-            margin: 0;
-        }
-
-        .section-title {
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: #3730a3;
-            font-size: 20px;
-            border-left: 5px solid #7c3aed;
-            padding-left: 12px;
-        }
-
-        .info {
-            padding: 15px 18px;
-            margin-bottom: 8px;
-            background: #f8f7ff;
-            border-radius: 10px;
-            line-height: 1.6;
-            border: 1px solid #ede9fe;
-        }
-
-        .label {
+        .student-id {
+            display: inline-block;
+            background: #4f46e5;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
             font-weight: bold;
-            color: #3730a3;
         }
 
-        .description {
+        .profile-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .info-box {
             background: #f5f3ff;
             padding: 18px;
             border-radius: 12px;
-            line-height: 1.8;
-            color: #4b5563;
             border: 1px solid #ddd6fe;
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 15px;
+        .info-box.full {
+            grid-column: span 2;
         }
 
-        .social-links a {
-            text-decoration: none;
-            background: #4f46e5;
-            color: white;
-            padding: 11px 20px;
-            border-radius: 9px;
-            transition: 0.3s;
+        .label {
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 6px;
             font-weight: bold;
         }
 
-        .social-links a:hover {
-            background: #3730a3;
-            transform: translateY(-2px);
+        .value {
+            color: #312e81;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.5;
         }
 
         .navigation {
             display: flex;
             justify-content: center;
+            gap: 15px;
             margin-top: 35px;
         }
 
         .navigation a {
-            text-decoration: none;
-            background: #7c3aed;
-            color: white;
+            display: inline-block;
             padding: 13px 26px;
+            background: #4f46e5;
+            color: white;
+            text-decoration: none;
             border-radius: 10px;
+            font-size: 15px;
             font-weight: bold;
-            transition: 0.3s;
+            transition: 0.3s ease;
         }
 
         .navigation a:hover {
+            background: #3730a3;
+            transform: translateY(-3px);
+        }
+
+        .navigation a.profile {
+            background: #7c3aed;
+        }
+
+        .navigation a.profile:hover {
             background: #6d28d9;
-            transform: translateY(-2px);
         }
 
         @media (max-width: 600px) {
@@ -139,12 +131,30 @@
                 padding: 20px 10px;
             }
 
-            .profile-card {
+            .container {
+                margin: 20px auto;
                 padding: 30px 20px;
             }
 
-            .profile-header h1 {
-                font-size: 25px;
+            .profile-info {
+                grid-template-columns: 1fr;
+            }
+
+            .info-box.full {
+                grid-column: span 1;
+            }
+
+            .navigation {
+                flex-direction: column;
+            }
+
+            .navigation a {
+                width: 100%;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 26px;
             }
         }
     </style>
@@ -152,90 +162,116 @@
 
 <body>
 
-<div class="profile-card">
+    <div class="container">
 
-    <div class="profile-header">
-        <div class="profile-icon">👨‍🎓</div>
+        <div class="profile-header">
 
-        <h1>My Student Profile</h1>
+            <div class="profile-icon">
+                👤
+            </div>
 
-        <p>Personal and Academic Information</p>
+            <div class="student-id">
+                <?= $student_id; ?>
+            </div>
+
+            <h1>Student Profile</h1>
+
+        </div>
+
+        <div class="profile-info">
+
+            <div class="info-box">
+                <div class="label">FULL NAME</div>
+                <div class="value">
+                    <?= $name; ?>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="label">STUDENT ID</div>
+                <div class="value">
+                    <?= $student_id; ?>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="label">COURSE</div>
+                <div class="value">
+                    <?= $course; ?>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="label">YEAR LEVEL</div>
+                <div class="value">
+                    <?= $year; ?>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="label">SECTION</div>
+                <div class="value">
+                    <?= $section; ?>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="label">EMAIL</div>
+                <div class="value">
+                    <?= $email; ?>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="label">ADDRESS</div>
+                <div class="value">
+                    <?= $address; ?>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="label">CONTACT NUMBER</div>
+                <div class="value">
+                    <?= $contact; ?>
+                </div>
+            </div>
+
+            <div class="info-box full">
+                <div class="label">SKILLS</div>
+                <div class="value">
+                    <?= $skills; ?>
+                </div>
+            </div>
+
+            <div class="info-box full">
+                <div class="label">HOBBIES</div>
+                <div class="value">
+                    <?= $hobbies; ?>
+                </div>
+            </div>
+
+            <div class="info-box full">
+                <div class="label">ABOUT ME</div>
+                <div class="value">
+                    <?= $description; ?>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="navigation">
+
+            <a href="<?= site_url('student'); ?>">
+                🏠 Home
+            </a>
+
+            <a href="<?= site_url('student/profile'); ?>" class="profile">
+                👤 Student Profile
+            </a>
+
+        </div>
+
     </div>
-
-    <h2 class="section-title">Basic Information</h2>
-
-    <div class="info">
-        <span class="label">Student ID:</span>
-        <?= $student_id; ?>
-    </div>
-
-    <div class="info">
-        <span class="label">Name:</span>
-        <?= $name; ?>
-    </div>
-
-    <div class="info">
-        <span class="label">Course:</span>
-        <?= $course; ?>
-    </div>
-
-    <div class="info">
-        <span class="label">Year Level:</span>
-        <?= $year; ?>
-    </div>
-
-    <div class="info">
-        <span class="label">Section:</span>
-        <?= $section; ?>
-    </div>
-
-    <div class="info">
-        <span class="label">Email:</span>
-        <?= $email; ?>
-    </div>
-
-    <h2 class="section-title">Additional Information</h2>
-
-    <div class="info">
-        <span class="label">Address:</span>
-        <?= $address; ?>
-    </div>
-
-    <div class="info">
-        <span class="label">Contact Number:</span>
-        <?= $contact; ?>
-    </div>
-
-    <div class="info">
-        <span class="label">Skills:</span>
-        <?= $skills; ?>
-    </div>
-
-    <div class="info">
-        <span class="label">Hobbies:</span>
-        <?= $hobbies; ?>
-    </div>
-
-    <h2 class="section-title">Profile Description</h2>
-
-    <div class="description">
-        <?= $description; ?>
-    </div>
-
-    <h2 class="section-title">Social Media</h2>
-
-    <div class="social-links">
-        <a href="<?= $facebook; ?>" target="_blank">Facebook</a>
-        <a href="<?= $github; ?>" target="_blank">GitHub</a>
-    </div>
-
-    <div class="navigation">
-    <a href="<?= site_url('student'); ?>">
-        ← Back to Student Home
-    </a>
-</div>
-
-</div>
 
 </body>
 </html>

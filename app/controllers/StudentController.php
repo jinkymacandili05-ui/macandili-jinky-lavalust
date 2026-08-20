@@ -6,22 +6,16 @@ class StudentController extends Controller
 {
     public function index()
     {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-
-        $_SESSION['student_access'] = '3F4';
-
         $student = [
             'student_id' => 'MCC2024-00201',
             'name'       => 'JINKY ACAN MACANDILI',
             'course'     => 'BS Information Technology',
             'year'       => '3rd Year',
             'section'    => '3-F4',
-            'email'      => 'jinkymaandili05@gmail.com',
+            'email'      => 'your@email.com',
 
             'address'    => 'Calapan City, Oriental Mindoro',
-            'contact'    => '09277349712',
+            'contact'    => '09XXXXXXXXX',
             'skills'     => 'Web Development, Programming, and Problem Solving',
             'hobbies'    => 'Listening to Music, Watching Movies, and Playing Games',
             'description'=> 'I am a 3rd year BS Information Technology student who is interested in technology, programming, and web development.',
@@ -32,6 +26,13 @@ class StudentController extends Controller
         $this->call->view('student/StudentHome', $student);
     }
 
+    public function accessProfile()
+    {
+        $_SESSION['profile_access'] = true;
+
+        redirect('student/profile');
+    }
+
     public function profile()
     {
         $student = [
@@ -40,10 +41,10 @@ class StudentController extends Controller
             'course'     => 'BS Information Technology',
             'year'       => '3rd Year',
             'section'    => '3-F4',
-            'email'      => 'jinkymaandili05@gmail.com',
+            'email'      => 'your@email.com',
 
             'address'    => 'Calapan City, Oriental Mindoro',
-            'contact'    => '09277349825',
+            'contact'    => '09XXXXXXXXX',
             'skills'     => 'Web Development, Programming, and Problem Solving',
             'hobbies'    => 'Listening to Music, Watching Movies, and Playing Games',
             'description'=> 'I am a 3rd year BS Information Technology student who is interested in technology, programming, and web development.',
