@@ -8,14 +8,14 @@ class StudentController extends Controller
     {
         $student = [
             'student_id' => 'MCC2024-00201',
-            'name'       => 'JINKY ACAN MACANDILI',
+            'name'       => 'JINKY ACLAN MACANDILI',
             'course'     => 'BS Information Technology',
             'year'       => '3rd Year',
             'section'    => '3-F4',
-            'email'      => 'your@email.com',
+            'email'      => 'jinkymacandili05@gmail.com',
 
             'address'    => 'Calapan City, Oriental Mindoro',
-            'contact'    => '09XXXXXXXXX',
+            'contact'    => '09277349714',
             'skills'     => 'Web Development, Programming, and Problem Solving',
             'hobbies'    => 'Listening to Music, Watching Movies, and Playing Games',
             'description'=> 'I am a 3rd year BS Information Technology student who is interested in technology, programming, and web development.',
@@ -41,10 +41,10 @@ class StudentController extends Controller
             'course'     => 'BS Information Technology',
             'year'       => '3rd Year',
             'section'    => '3-F4',
-            'email'      => 'your@email.com',
+            'email'      => 'jinkymacandili05@gmail.com',
 
             'address'    => 'Calapan City, Oriental Mindoro',
-            'contact'    => '09XXXXXXXXX',
+            'contact'    => '09277349714',
             'skills'     => 'Web Development, Programming, and Problem Solving',
             'hobbies'    => 'Listening to Music, Watching Movies, and Playing Games',
             'description'=> 'I am a 3rd year BS Information Technology student who is interested in technology, programming, and web development.',
