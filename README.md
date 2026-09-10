@@ -185,6 +185,17 @@ $config['base_url'] = 'http://localhost:3000/';
 
 ---
 
+## Product CRUD Exercise
+
+This project includes an authenticated product inventory at `/products`.
+
+1. Create the `users` and `products` tables in Aiven MySQL using the migration files in `app/migrations/` (or run the equivalent SQL in the Aiven console). If the `users` table already existed before this exercise, apply migration `004_add_auth_columns_to_users.php` or run: `ALTER TABLE users ADD COLUMN password VARCHAR(255) NULL, ADD COLUMN role ENUM('admin','moderator','user') NOT NULL DEFAULT 'user', ADD COLUMN is_active TINYINT(1) NOT NULL DEFAULT 1;`. The product table contains `id`, `product_name`, `description`, `price`, `quantity`, and `created_at`.
+2. Configure these environment variables locally and in Render: `DB_HOST`, `DB_PORT`, `DB_USERNAME`, `DB_PASSWORD`, `DB_NAME`, and optionally `DB_CHARSET`.
+3. Start the app with the public directory as the document root. Visit `/register` to create the first account, then sign in at `/login`.
+4. Product routes are protected by the `auth` middleware. Product writes use POST requests and the delete action requires an authenticated session.
+
+Never commit the Aiven password, `APP_KEY`, or other database credentials to the repository.
+
 ## Building a REST API
 
 LavaLust supports REST API development out of the box. Controllers can return JSON responses for API endpoints.

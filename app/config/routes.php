@@ -53,4 +53,18 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 //$router->get('/student/access-profile', 'StudentController::accessProfile');
 
-$router->get('/users', 'UserController::index');
+$router->get('/', 'AuthController::login');
+$router->get('/login', 'AuthController::login');
+$router->post('/login', 'AuthController::authenticate');
+$router->get('/register', 'AuthController::register');
+$router->post('/register', 'AuthController::store');
+$router->get('/logout', 'AuthController::logout');
+
+$router->group(['middleware' => 'auth'], function ($router) {
+       $router->get('/products', 'ProductController::index');
+       $router->get('/products/create', 'ProductController::create');
+       $router->post('/products', 'ProductController::store');
+       $router->get('/products/edit/{id}', 'ProductController::edit')->where_number('id');
+       $router->post('/products/update/{id}', 'ProductController::update')->where_number('id');
+       $router->post('/products/delete/{id}', 'ProductController::delete')->where_number('id');
+});
